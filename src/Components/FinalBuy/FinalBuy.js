@@ -1,6 +1,7 @@
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
-import React from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 
 
@@ -22,13 +23,32 @@ const useStyles = makeStyles({
 })
 
 const FinalBuy = (props) => {
+    const [userInfo, setUserInfo] = useContext(UserContext);
 
+    useEffect(() => {
+
+        if(userInfo){
+            
+            fetch('http://localhost:8080/pruchase', {
+                method: 'POST',
+                body: JSON.stringify(userInfo.buys),
+                headers: {
+                'Content-type': 'application/json; charset=UTF-8',
+                },
+            })
+            .then(response => response.json())
+            .then(result => console.log(result))
+        }
+        
+
+    }, [userInfo])
+
+    
     const classes = useStyles();
     return (
         <Box className={classes.root}>
             <Container>
                 <Grid container>
-                    
                     <Grid item xs={12} sm={12} md={12}>
                         <Paper className={classes.paper}>
                             <h1 style={{textAlign: "center", marginTop: "100px"}}>Thanks for BUY</h1>

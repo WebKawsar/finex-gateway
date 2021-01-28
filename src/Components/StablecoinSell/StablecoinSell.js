@@ -1,8 +1,8 @@
 import { Button, makeStyles, TextField } from '@material-ui/core';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { SellUserContext } from '../../App';
+import { UserContext } from '../../App';
 import Dashboard from '../Dashboard/Dashboard';
 
 
@@ -63,13 +63,9 @@ const allTokens = [
 
 const StablecoinSell = () => {
 
-    const [sellUserInfo, setSellUserInfo] = useContext(SellUserContext);
+    const [userInfo, setUserInfo] = useContext(UserContext);
     const [tokens, setTokens] = useState(allTokens);
 
-    useEffect(() => {
-
-       
-    }, [])
 
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
@@ -77,7 +73,7 @@ const StablecoinSell = () => {
 
         if(data){
         
-            setSellUserInfo({...sellUserInfo, ...data})
+            setUserInfo({...userInfo, sells:data})
             history.push("/sellwallet")
         }
     }

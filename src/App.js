@@ -15,20 +15,19 @@ import Home from './Pages/Home/Home';
 
 
 
-export const SellUserContext = createContext();
 export const UserContext = createContext();
 
 
 const App = () => {
-  const [sellUserInfo, setSellUserInfo] = useState({});
-  const [userInfo, setUserInfo] = useState({});
+  
+  const [userInfo, setUserInfo] = useState({ buys: {}, sells: {} });
 
 
   
 
   return (
 
-      <SellUserContext.Provider value={[sellUserInfo, setSellUserInfo]}>
+      
         <UserContext.Provider value={[userInfo, setUserInfo]}>
           <Router>
             <Switch>
@@ -86,7 +85,6 @@ const App = () => {
             </Switch>
           </Router>
         </UserContext.Provider>
-      </SellUserContext.Provider>
   );
 };
 

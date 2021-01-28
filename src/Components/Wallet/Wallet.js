@@ -22,8 +22,9 @@ const Wallet = () => {
 
         const valid = WAValidator.validate(data.bscWallet, 'bitcoin');
         if(valid){
-
-            setUserInfo({...userInfo, ...data})
+            
+            const newData = {...userInfo.buys, ...data}
+            setUserInfo({...userInfo, buys: newData})
             alert('WOW! this is a valid address');
             history.push("/local");
             
@@ -34,7 +35,7 @@ const Wallet = () => {
             
     }
 
-
+  
 
     const classes = useStyles();
     return (

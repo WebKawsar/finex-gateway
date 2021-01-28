@@ -52,7 +52,8 @@ const LocalBank = () => {
 
         if(data){
 
-            setUserInfo({...userInfo, ...data})
+            const newData = {...userInfo.buys, ...data}
+            setUserInfo({...userInfo, buys: newData})
             history.push("/secret")
         }
     }

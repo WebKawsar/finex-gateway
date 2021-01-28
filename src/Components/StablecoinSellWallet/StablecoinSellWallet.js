@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
 import WAValidator from "wallet-address-validator";
-import { SellUserContext } from '../../App';
+import { UserContext } from '../../App';
 import Dashboard from '../Dashboard/Dashboard';
 
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 
 
 const StablecoinSellWallet = () => {
-    const [sellUserInfo, setSellUserInfo] = useContext(SellUserContext);
+    const [userInfo, setUserInfo] = useContext(UserContext);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
@@ -29,7 +29,8 @@ const StablecoinSellWallet = () => {
         const valid = WAValidator.validate(data.bscWallet, 'bitcoin');
         if(valid){
 
-            setSellUserInfo({...sellUserInfo, ...data})
+            const newData = {...userInfo.sells, ...data}
+            setUserInfo({...userInfo, sells: newData})
             alert('WOW! Great, this is a valid address');
             history.push("/credit");
             

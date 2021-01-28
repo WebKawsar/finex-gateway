@@ -2,7 +2,7 @@ import { Button, makeStyles, TextField } from '@material-ui/core';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
-import { SellUserContext } from '../../App';
+import { UserContext } from '../../App';
 import Dashboard from '../Dashboard/Dashboard';
 
 
@@ -26,20 +26,25 @@ const useStyles = makeStyles({
 
 const SellTranssction = () => {
 
-
-    const [sellUserInfo, setSellUserInfo] = useContext(SellUserContext);
+    const [userInfo, setUserInfo] = useContext(UserContext);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
 
         if(data){
 
-            setSellUserInfo({...sellUserInfo, ...data})
+            const newData = {...userInfo.sells, ...data}
+            setUserInfo({...userInfo, sells: newData})
             history.push("/finallSell");
             
         } 
             
     }
+
+
+    
+
+
 
     const classes = useStyles();
     return (
@@ -47,7 +52,7 @@ const SellTranssction = () => {
             <Dashboard>
 
                 <p style={{margin: "30px 0", fontSize: "20px", fontWeght: "bold", color: "black"}}>Transfer your Tokens ( TAOA ) to the following BSC (Binance Smart Chain) adress and enter the resultina TXid</p>
-                <p style={{fontSize: "20px", fontWeight: "bold", color: "black", margin: "30px 0"}}>{`{ ${sellUserInfo?.bscWallet} }`}</p>
+                <p style={{fontSize: "20px", fontWeight: "bold", color: "black", margin: "30px 0"}}>{`{ ${userInfo.sells?.bscWallet} }`}</p>
                 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     

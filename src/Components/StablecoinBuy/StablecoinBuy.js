@@ -59,11 +59,12 @@ const StablecoinBuy = () => {
 
         if(data){
         
-            setUserInfo(data)
+            setUserInfo({...userInfo, buys:data})
             history.push("/wallet")
         }
     }
 
+    
     
 
 

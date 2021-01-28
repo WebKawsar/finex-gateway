@@ -16,8 +16,8 @@ const SecretSection = () => {
         history.push("/finalbuy")
     }
       
+   
 
-    console.log(userInfo);
     return (
         <>
             <Dashboard>
@@ -27,7 +27,7 @@ const SecretSection = () => {
                     <h2>Swap Id: ({ Math.ceil( Math.random() * 12345678) })</h2>
 
                     <p style={{margin: "30px 0", fontSize: "20px"}}>As soon as the funds are received the transaction to your BSC Wallet will be made the following address</p>
-                    <p style={{fontSize: "20px"}}>{`{ ${userInfo.bscWallet} }`}</p>
+                    <p style={{fontSize: "20px"}}>{`{ ${userInfo?.buys?.bscWallet} }`}</p>
 
                     <Link style={{textAlign: "center", margin: "50px 0", display: "block", color: "blue", fontSize: "20px"}} to="/wallet">Doubts? Discord's or Telegram</Link>
 

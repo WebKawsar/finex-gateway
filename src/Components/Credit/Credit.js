@@ -2,7 +2,7 @@ import { Button, makeStyles, TextField } from '@material-ui/core';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { Link, useHistory } from 'react-router-dom';
-import { SellUserContext } from '../../App';
+import { UserContext } from '../../App';
 import Dashboard from '../Dashboard/Dashboard';
 
 
@@ -22,14 +22,15 @@ const useStyles = makeStyles({
 
 const Credit = () => {
 
-    const [sellUserInfo, setSellUserInfo] = useContext(SellUserContext);
+    const [userInfo, setUserInfo] = useContext(UserContext);
     const history = useHistory();
     const { register, handleSubmit, errors } = useForm();
     const onSubmit = (data) => {
 
         if(data){
 
-            setSellUserInfo({...sellUserInfo, ...data})
+            const newData = {...userInfo.sells, ...data}
+            setUserInfo({...userInfo, sells: newData})
             history.push("/transaction");
             
         } 
