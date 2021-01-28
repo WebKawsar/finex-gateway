@@ -15,7 +15,7 @@ const FinalSell = () => {
 
         if(data){
 
-            fetch('http://localhost:8080/sells', {
+            fetch('https://finex-gateway.herokuapp.com/sells', {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {

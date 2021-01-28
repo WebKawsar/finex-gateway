@@ -80,8 +80,6 @@ const App = () => {
                 <FinalSell />
               </Route>
 
-
-
             </Switch>
           </Router>
         </UserContext.Provider>

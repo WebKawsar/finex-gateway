@@ -29,7 +29,7 @@ const FinalBuy = (props) => {
 
         if(userInfo){
             
-            fetch('http://localhost:8080/pruchase', {
+            fetch('https://finex-gateway.herokuapp.com/pruchase', {
                 method: 'POST',
                 body: JSON.stringify(userInfo.buys),
                 headers: {
